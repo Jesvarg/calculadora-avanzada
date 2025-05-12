@@ -1,13 +1,12 @@
 import json, uuid, threading
-import re
 
 USUARIOS_PATH = "usuarios.json"
 _lock = threading.Lock()
 
 def leer_usuarios():
     try:
-        with open(USUARIOS_PATH, "r") as f:
-            return json.load(f)
+        with open(USUARIOS_PATH, "r") as archivo:
+            return json.load(archivo)
     except (FileNotFoundError, json.decoder.JSONDecodeError):
         return []
 

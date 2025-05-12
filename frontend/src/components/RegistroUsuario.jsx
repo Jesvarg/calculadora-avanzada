@@ -53,6 +53,7 @@ const RegistroUsuario = () => {
         {!validarEmail(email) && email && (
           <p className="text-red-500 text-sm">Email inválido</p>
         )}
+        
       </div>
 
       <div className="mb-4">
@@ -65,7 +66,7 @@ const RegistroUsuario = () => {
           onChange={(e) => setSaldo(e.target.value)}
         />
         {parseFloat(saldo) < 0 && (
-          <p className="text-red-500 text-sm">Saldo no puede ser negativo</p>
+          <p className="text-red-500 text-sm">El saldo no puede ser negativo</p>
         )}
       </div>
 

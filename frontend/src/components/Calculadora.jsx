@@ -16,6 +16,7 @@ const Calculadora = () => {
         operacion,
       });
       setResultado(res.data.resultado);
+      document.dispatchEvent(new Event("historialActualizado"));
       setError(null);
     } catch (err) {
       const msg = err.response?.data?.error || "Error de conexión con el servidor.";
@@ -26,10 +27,10 @@ const Calculadora = () => {
 
   return (
     <div className="max-w-md mx-auto p-4 bg-white rounded shadow">
-      <h2 className="text-xl font-bold mb-4">Calculadora Avanzada</h2>
+      <h2 className="text-xl font-bold mb-4">Calculadora</h2>
 
       <div className="mb-2">
-        <label className="block">Número 1</label>
+        <label className="block">Número a</label>
         <input
           type="number"
           className="border p-2 w-full"
@@ -39,7 +40,7 @@ const Calculadora = () => {
       </div>
 
       <div className="mb-2">
-        <label className="block">Número 2</label>
+        <label className="block">Número b</label>
         <input
           type="number"
           className="border p-2 w-full"

@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import api from "../services/api";
 
 const Historial = () => {
+  
   const [historial, setHistorial] = useState([]);
   const [operacionFiltro, setOperacionFiltro] = useState("");
   const [error, setError] = useState(null);
   const [paginaActual, setPaginaActual] = useState(1);
-  const porPagina = 10;
+  const elementosPorPagina = 10;
 
   const cargarHistorial = React.useCallback(async () => {
     try {
@@ -16,23 +17,29 @@ const Historial = () => {
       const res = await api.get(url);
       setHistorial(res.data);
       setError(null);
-      setPaginaActual(1); // reinicia a la página 1 al filtrar
-    } catch {
-      setError("Error al cargar historial.");
+      setPaginaActual(1);
+    } catch (err){
+      const msg = err.response?.data?.error || "Error de conexión con el servidor.";
+      setError(msg);
       setHistorial([]);
     }
   }, [operacionFiltro]);
 
   useEffect(() => {
     cargarHistorial();
-  }, [cargarHistorial]);
+    const listener = () =>
+      cargarHistorial();
+      document.addEventListener("historialActualizado", listener);
+      return () => 
+        document.removeEventListener("historialActualizado", listener);
+      }, [cargarHistorial]);
 
   const historialPaginado = historial.slice(
-    (paginaActual - 1) * porPagina,
-    paginaActual * porPagina
+    (paginaActual - 1) * elementosPorPagina,
+    paginaActual * elementosPorPagina
   );
 
-  const totalPaginas = Math.ceil(historial.length / porPagina);
+  const totalPaginas = Math.ceil(historial.length / elementosPorPagina);
 
   return (
     <div className="bg-white p-4 rounded shadow">
@@ -51,13 +58,6 @@ const Historial = () => {
           <option value="multiplicar">Multiplicar</option>
           <option value="dividir">Dividir</option>
         </select>
-
-        <button
-          onClick={cargarHistorial}
-          className="ml-auto bg-blue-600 text-white px-3 py-1 rounded"
-        >
-          Recargar
-        </button>
       </div>
 
       {error && <p className="text-red-500">{error}</p>}

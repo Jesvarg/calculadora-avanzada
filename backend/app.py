@@ -82,7 +82,7 @@ def obtener_historial():
             historial = [h for h in historial if h["operacion"] == operacion]
             
         historial_ordenado = sorted(historial, key=lambda x: x["timestamp"], reverse=True)
-        return jsonify(historial_ordenado[:100])  # puedes devolver más si deseas
+        return jsonify(historial_ordenado[:100]) 
     except Exception:
         return jsonify({"error": "No se pudo obtener historial"}), 500
 
