@@ -1,0 +1,52 @@
+[
+  {
+    "id": "9bade4b1-d152-4105-a1b1-969a91c7680e",
+    "timestamp": "2025-05-12T11:32:37.689156Z",
+    "operacion": "sumar",
+    "parametros": {
+      "a": 3.0,
+      "b": 5.0
+    },
+    "resultado": 8.0
+  },
+  {
+    "id": "e222a5f1-1fda-425f-8e47-ec059fc22bef",
+    "timestamp": "2025-05-12T12:26:30.756377Z",
+    "operacion": "restar",
+    "parametros": {
+      "a": 10.0,
+      "b": 5.0
+    },
+    "resultado": 5.0
+  },
+  {
+    "id": "af5e8d17-6d13-4672-8c69-042579487a73",
+    "timestamp": "2025-05-12T12:27:53.903743Z",
+    "operacion": "dividir",
+    "parametros": {
+      "a": 10.0,
+      "b": 10.0
+    },
+    "resultado": 1.0
+  },
+  {
+    "id": "9662dfc8-9c62-4824-9137-8cdb2e4d846d",
+    "timestamp": "2025-05-12T12:32:17.003515Z",
+    "operacion": "multiplicar",
+    "parametros": {
+      "a": 10.0,
+      "b": 10.0
+    },
+    "resultado": 100.0
+  },
+  {
+    "id": "6cbe5122-97d3-4dbb-804f-4a0a415ab58a",
+    "timestamp": "2025-05-12T12:34:49.775880Z",
+    "operacion": "multiplicar",
+    "parametros": {
+      "a": 10.0,
+      "b": 0.0
+    },
+    "resultado": 0.0
+  }
+]
